@@ -25,41 +25,54 @@
     .brand{display:flex; align-items:center; gap:12px}
     .avatar{width:40px; height:40px; border-radius:999px; background:linear-gradient(135deg,#7c3aed,#22c55e); display:inline-flex; align-items:center; justify-content:center; font-weight:800}
     .pill{display:inline-flex; gap:8px; align-items:center; padding:6px 10px; border:1px solid var(--border); border-radius:999px; background:var(--panel); color:var(--muted); font-size:12px}
-    .hero{display:grid; grid-template-columns:1.2fr .8fr; gap:28px; padding:40px 0; align-items:center}
+    .hero{display:grid; grid-template-columns:80% 20%; gap:28px; padding:40px 0; align-items:center}
     .hero h1{font-size:40px; margin:0 0 8px 0}
     .hero p{color:var(--muted); line-height:1.6}
-    .hero .card{background:var(--panel); border:1px solid var(--border); border-radius:16px; padding:18px}
+    .hero img{width:100%; max-width:200px; height:auto; border-radius:50%; border:3px solid var(--border); object-fit:cover; display:block; margin:0 auto}
     .grid{display:grid; gap:16px}
     .grid.cols-2{grid-template-columns:1fr 1fr}
     .grid.cols-3{grid-template-columns:repeat(3, 1fr)}
     .section{padding:30px 0 10px}
-    .section h2{font-size:24px; margin:10px 0 12px}
+    .section h2{font-size:24px; margin:10px 0 20px; border-bottom:2px solid var(--border); padding-bottom:6px}
     .card{background:var(--card); border:1px solid var(--border); border-radius:16px; padding:16px}
-    .news-item{display:flex; gap:12px}
-    .news-date{width:110px; color:var(--muted); font-variant-numeric:tabular-nums}
-    .pub{display:grid; grid-template-columns:80px 1fr; gap:14px}
-    .pub .thumb{width:80px; height:80px; border-radius:10px; background:linear-gradient(135deg, #1d2533, #0b0d12); border:1px solid var(--border)}
-    .kicker{color:var(--accent); font-weight:700; letter-spacing:.06em; font-size:12px; text-transform:uppercase}
-    .list{display:grid; gap:12px}
-    .tag{display:inline-block; padding:2px 8px; border:1px solid var(--border); border-radius:999px; font-size:12px; color:var(--muted)}
+    .news-list{display:grid; gap:16px}
+    .news-item{padding:16px; border-left:4px solid var(--accent); background:var(--panel); border-radius:12px;}
+    .news-meta{color:var(--muted); font-size:14px; margin-bottom:6px}
+    .news-title{font-weight:600; margin-bottom:6px}
+    .news-desc{color:var(--text); line-height:1.4}
+    .tag{display:inline-block; margin-top:6px; padding:2px 8px; border:1px solid var(--border); border-radius:999px; font-size:12px; color:var(--muted)}
     footer{border-top:1px solid var(--border); margin-top:40px; padding:20px 0; color:var(--muted)}
     .btn{display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:10px; border:1px solid var(--border); background:var(--panel); color:var(--text); font-weight:600}
     .btn:hover{transform:translateY(-1px)}
     .row{display:flex; gap:12px; flex-wrap:wrap}
-    @media (max-width:900px){.hero{grid-template-columns:1fr}.grid.cols-2{grid-template-columns:1fr}.grid.cols-3{grid-template-columns:1fr 1fr}}
+    @media (max-width:900px){.hero{grid-template-columns:1fr; text-align:center}.hero img{margin-top:20px; max-width:180px}}
     @media (max-width:620px){nav a{white-space:nowrap}.pub{grid-template-columns:60px 1fr}}
-  </style>
-  <script>
-    // Smooth scroll for anchor links
-    document.addEventListener('DOMContentLoaded', () => {
-      for (const a of document.querySelectorAll('a[href^="#"]')){
-        a.addEventListener('click', (e)=>{
-          const id = a.getAttribute('href');
-          if(id.length>1){ e.preventDefault(); document.querySelector(id).scrollIntoView({behavior:'smooth'}); history.pushState(null, '', id); }
-        });
-      }
-    });
-  </script>
+      /* === Publications, Awards, Experience Templates === */
+    .section-note{color:var(--muted); font-size:13px; margin-top:-10px; margin-bottom:12px}
+    /* Publications */
+    .pubs-list{display:grid; gap:16px}
+    .pub-item{display:grid; grid-template-columns:80px 1fr; gap:16px; padding:14px; border:1px solid var(--border); border-radius:12px; background:var(--panel)}
+    .pub-thumb{width:80px; height:80px; border-radius:10px; background:linear-gradient(135deg,#1d2533,#0b0d12); border:1px solid var(--border)}
+    .pub-title{font-weight:600}
+    .pub-meta{color:var(--muted); font-size:14px; margin-top:4px}
+    .pub-links{margin-top:8px; display:flex; gap:8px; flex-wrap:wrap}
+    .pub-link{padding:2px 8px; border:1px solid var(--border); border-radius:999px; font-size:12px; color:var(--muted)}
+    @media(max-width:600px){.pub-item{grid-template-columns:60px 1fr}}
+
+    /* Awards */
+    .awards-list{display:grid; gap:12px}
+    .award-item{padding:12px 14px; border:1px solid var(--border); border-radius:10px; background:var(--panel); display:flex; justify-content:space-between; align-items:center}
+    .award-title{font-weight:600}
+    .award-meta{color:var(--muted); font-size:14px}
+
+    /* Experience */
+    .xp-list{display:grid; gap:16px}
+    .xp-item{padding:16px; border:1px solid var(--border); border-radius:12px; background:var(--panel)}
+    .xp-role{font-weight:700}
+    .xp-company{opacity:.95}
+    .xp-meta{color:var(--muted); font-size:14px; margin:4px 0 8px}
+    .xp-bullets{margin:0; padding-left:18px; color:var(--muted)}
+</style>
 </head>
 <body>
   <header>
@@ -81,129 +94,110 @@
 
   <main id="top" class="container">
     <section class="hero">
-    <div>
-      <span class="pill">AI/ML • Autonomous Driving • Bioinformatics</span>
-      <p>
-        <strong>Bio:</strong> I am currently a Machine Learning Engineer at
-        <a href="https://rivian.com/our-company" target="_blank" rel="noreferrer">Rivian</a>, where I design end-to-end autonomous driving systems spanning <em>perception</em>, <em>E2E planning</em>, and <em>visual-language action (VLA)</em>. Previously, I was a Senior Deep Learning Engineer at
-        <a href="https://www.xpeng.com/" target="_blank" rel="noreferrer">XSense.AI (XPeng Motors)</a>.
-        <br><br>
-        <strong>Research:</strong> I completed my Ph.D. at Purdue University, advised by
-        <a href="https://polytechnic.purdue.edu/profile/byang" target="_blank" rel="noreferrer">Prof. Baijian Yang</a>,
-        <a href="https://hobi.med.ufl.edu/profile/song-qianqian/" target="_blank" rel="noreferrer">Prof. Qianqian Song</a>, and
-        <a href="https://medicine.iu.edu/faculty/51979/su-jing" target="_blank" rel="noreferrer">Prof. Jing Su</a>.
+      <div>
+        <span class="pill">AI/ML • Autonomous Driving • Bioinformatics</span>
+        <p>
+          <strong>Bio:</strong> I am currently a Machine Learning Engineer at 
+            <a href="https://rivian.com/our-company" target="_blank" rel="noreferrer">Rivian</a>, where I design end-to-end autonomous driving systems spanning <em>perception</em>, <em>E2E planning</em>, and <em>visual-language action (VLA)</em>. Previously, I was a Senior Deep Learning Engineer at
+              <a href="https://www.xpeng.com/" target="_blank" rel="noreferrer">XSense.AI (XPeng Motors)</a>. 
+            <br><br>
+          <strong>Research:</strong> I completed my Ph.D. at Purdue University, advised by
+            <a href="https://polytechnic.purdue.edu/profile/byang" target="_blank" rel="noreferrer">Prof. Baijian Yang</a>,
+            <a href="https://hobi.med.ufl.edu/profile/song-qianqian/" target="_blank" rel="noreferrer">Prof. Qianqian Song</a>, and
+            <a href="https://medicine.iu.edu/faculty/51979/su-jing" target="_blank" rel="noreferrer">Prof. Jing Su</a>.
         </p>
         <div class="row" style="margin-top:10px">
-        <a class="btn" href="#publications">View publications</a>
-        <a class="btn" href="#contact">Get in touch</a>
-        <a class="btn" href="./Ziyang_Tang_CV.pdf" download>Download CV (PDF)</a>
+          <a class="btn" href="#publications">View publications</a>
+          <a class="btn" href="#contact">Get in touch</a>
+          <a class="btn" href="./Ziyang_Tang_CV.pdf" download>Download CV (PDF)</a>
         </div>
       </div>
       <div>
-      <img src="portrait.jpg" alt="Ziyang Tang portrait" />
-    </div>
+        <img src="portrait.jpg" alt="Ziyang Tang portrait" />
+      </div>
     </section>
 
+    <!-- News Section Template -->
     <section id="news" class="section">
       <h2>News</h2>
-      <div class="list">
-        <div class="news-item card"><div class="news-date">Sep 2025</div><div>Released VLA framework for end‑to‑end autonomous planning with 5× faster inference via flow‑matching‑style decoder.</div></div>
-        <div class="news-item card"><div class="news-date">Jul 2025</div><div>Paper on spatial gene expression imputation accepted to <em>Nature Communications</em>.</div></div>
-        <div class="news-item card"><div class="news-date">May 2025</div><div>Open‑sourced multi‑modal training pipeline with FSDP + ZeRO‑3 and dynamic resolution.</div></div>
-      </div>
+      <ul class="news-bullets">
+        <li>📣 <strong>May 2025:</strong> I will join the Department of Computer Science @ UCLA as an Assistant Professor!</li>
+        <li>⭐ <strong>Sep 2024:</strong> "SemCoder: Training Code Language Models with Comprehensive Semantics Reasoning" got accepted by NeurIPS 2024.</li>
+        <li>🎉 <strong>Jul 2024:</strong> "Vulnerability Detection with Code Language Models: How Far Are We?" got accepted by ICSE 2025.</li>
+        <li><img src="deepmind-logo.png" alt="DeepMind Logo" style="height:1em; vertical-align:middle;"> <strong>May 2024:</strong> I joined Google DeepMind as a Student Researcher, working on Code LLMs.</li>
+      </ul>
     </section>
-
+    
+    <!-- Recent Publications -->
     <section id="publications" class="section">
-      <h2>Recent Publications <span style="font-size:14px; color:var(--muted)">• <a href="#full-list">Full list</a></span></h2>
-      <div class="grid cols-2">
-        <article class="card pub">
-          <div class="thumb" aria-hidden="true"></div>
+      <h2>Recent Publications <span style="font-size:14px; color:var(--muted)">• <a href="#full-publications">Full list</a></span></h2>
+        <div class="section-note">Each publication shows a preview image (left) and plain text details (right).</div>
+        <div class="pubs-list">
+        <!-- Pub 1 -->
+        <div class="pub-entry">
+          <img src="assets/papers/spaim.jpg" alt="SpaIM preview" />
           <div>
-            <div><strong>SpaIM: Spatial Gene Expression Imputation with Context‑Style Transfer</strong></div>
-            <div style="color:var(--muted)">Z. Tang, et al. <em>Nature Communications</em>, 2024</div>
-            <div class="row" style="margin-top:6px">
-              <a class="tag" href="#">paper</a>
-              <a class="tag" href="#">code</a>
-              <a class="tag" href="#">bibtex</a>
-            </div>
+          <div><strong>SpaIM: Spatial Gene Expression Imputation with Context‑Style Transfer</strong></div>
+          <div style="color:var(--muted)">Z. Tang*, A. Coauthor, B. Coauthor</div>
+          <div style="color:var(--muted)"><em>Nature Communications</em>, 2024</div>
+          <div style="margin-top:6px">
+            <a class="tag" href="#">paper</a>
+            <a class="tag" href="#">code</a>
+            <a class="tag" href="#">bibtex</a>
           </div>
-        </article>
-        <article class="card pub">
-          <div class="thumb" aria-hidden="true"></div>
+          </div>
+          </div>
+        <!-- Pub 2 -->
+        <div class="pub-entry">
+          <img src="assets/papers/xplanner.jpg" alt="Xplanner preview" />
           <div>
-            <div><strong>Xplanner: Model‑Based Planning for Autonomous Driving with VLA</strong></div>
-            <div style="color:var(--muted)">Z. Tang, et al. 2025 (preprint)</div>
-            <div class="row" style="margin-top:6px">
-              <a class="tag" href="#">paper</a>
-              <a class="tag" href="#">code</a>
-              <a class="tag" href="#">bibtex</a>
-            </div>
+          <div><strong>Xplanner: Model‑Based Planning for Autonomous Driving with VLA</strong></div>
+          <div style="color:var(--muted)">Z. Tang*, C. Teammate, D. Teammate</div>
+          <div style="color:var(--muted)"><em>Preprint</em>, 2025</div>
+          <div style="margin-top:6px">
+            <a class="tag" href="#">preprint</a>
+            <a class="tag" href="#">code</a>
           </div>
-        </article>
-      </div>
-
-      <div id="full-list" class="card" style="margin-top:12px">
-        <div class="kicker">Full list (selected)</div>
-        <ul>
-          <li>Cross‑modal reasoning for drug‑target prediction — <em>Briefings in Bioinformatics</em>.</li>
-          <li>Dynamic XNet for perception and planning — preprint.</li>
-          <li>… add the rest here.</li>
-        </ul>
-      </div>
+          </div>
+          </div>
+        </div>
     </section>
 
+    <!-- Honors & Awards -->
     <section id="awards" class="section">
       <h2>Honors & Awards</h2>
-      <div class="grid cols-3">
-        <div class="card">IBM Ph.D. Fellowship Award (year)</div>
-        <div class="card">ACM SIGSOFT Distinguished Paper Award (year)</div>
-        <div class="card">IEEE TSE Best Paper Award Runner‑up (year)</div>
-      </div>
+      <ul class="awards-bullets">
+        <li>📣 <strong>May 2025:</strong> I will join the Department of Computer Science @ UCLA as an Assistant Professor!</li>
+        <li>⭐ <strong>Sep 2024:</strong> "SemCoder: Training Code Language Models with Comprehensive Semantics Reasoning" got accepted by NeurIPS 2024.</li>
+        <li>🎉 <strong>Jul 2024:</strong> "Vulnerability Detection with Code Language Models: How Far Are We?" got accepted by ICSE 2025.</li>
+        <li><img src="deepmind-logo.png" alt="DeepMind Logo" style="height:1em; vertical-align:middle;"> <strong>May 2024:</strong> I joined Google DeepMind as a Student Researcher, working on Code LLMs.</li>
+      </ul>
     </section>
 
+    <!-- Work Experience
     <section id="experience" class="section">
       <h2>Work Experience</h2>
-      <div class="list">
-        <div class="card">
-          <strong>Rivian Automotive</strong> — Senior Software Engineer, Perception
-          <div style="color:var(--muted)">Built joint‑trained perception for dynamic objects and lane boundaries; accelerated inference for planning with continuous decoder.</div>
+      <div class="section-note">Template: most recent first. Focus on impact.</div>
+      <div class="xp-list">
+        <div class="xp-item">
+          <div class="xp-role">Machine Learning Engineer — <span class="xp-company">Rivian Automotive</span></div>
+          <div class="xp-meta">Perception • End‑to‑End Planning • VLA | YYYY–Present | Location</div>
+          <ul class="xp-bullets">
+            <li>Designed E2E autonomous driving stack; shipped continuous decoder for planning with 5× lower inference latency.</li>
+            <li>Led perception improvements for dynamic objects and lane boundaries; boosted AP/L2 metrics by X%.</li>
+            <li>Scaled training with FSDP + ZeRO‑3; reduced GPU-hours by Y% via dynamic resolution and token compression.</li>
+          </ul>
         </div>
-        <div class="card">
-          <strong>XSense.AI</strong> — Senior Deep Learning Engineer
-          <div style="color:var(--muted)">Developed VLM/VLA pipelines with temporal encoders, token compression, and large‑scale training (FSDP, ZeRO‑3).</div>
-        </div>
-      </div>
-    </section>
-
-    <section id="talks" class="section">
-      <h2>Recent Talks</h2>
-      <div class="list">
-        <div class="card">Advancing Multi‑Modal VLA for Autonomous Planning — 2025 — Host: TBD</div>
-        <div class="card">Semantic‑aware Spatial Transcriptomics — 2024 — Purdue</div>
-      </div>
-    </section>
-
-    <section id="service" class="section">
-      <h2>Service</h2>
-      <div class="grid cols-2">
-        <div class="card">
-          <div class="kicker">Program Committee</div>
-          <ul><li>ICLR (years)</li><li>ICML (years)</li><li>NeurIPS (years)</li></ul>
-        </div>
-        <div class="card">
-          <div class="kicker">Journal Reviewer</div>
-          <ul><li>IEEE TSE</li><li>ACM TOSEM</li></ul>
+        <div class="xp-item">
+          <div class="xp-role">Senior Deep Learning Engineer — <span class="xp-company">XSense.AI (XPeng Motors)</span></div>
+          <div class="xp-meta">VLM/VLA • Multi‑Modal • Systems | YYYY–YYYY | Location</div>
+          <ul class="xp-bullets">
+            <li>Developed VLM/VLA pipelines with temporal encoders and multi‑modal training.</li>
+            <li>Built evaluation harness for closed‑loop planning; improved success rate by Z% on internal benchmarks.</li>
+          </ul>
         </div>
       </div>
-    </section>
-
-    <section id="contact" class="section">
-      <h2>Contact</h2>
-      <div class="card">
-        <p>Email: <a href="mailto:ziy.tang@example.com">ziy.tang@example.com</a> • GitHub: <a href="https://github.com/" target="_blank" rel="noreferrer">github.com/yourhandle</a> • Scholar: <a href="#" target="_blank" rel="noreferrer">Google Scholar</a> • LinkedIn: <a href="#" target="_blank" rel="noreferrer">LinkedIn</a></p>
-        <p style="color:var(--muted)">Last updated: <span id="lastUpdated"></span></p>
-      </div>
-    </section>
+    </section> -->
 
     <footer class="container">
       <div>© <span id="year"></span> Ziyang (Tony) Tang • Built with a simple static template.</div>
@@ -214,22 +208,8 @@
     // Update dates
     const d = new Date();
     document.getElementById('year').textContent = d.getFullYear();
-    document.getElementById('lastUpdated').textContent = d.toLocaleDateString(undefined, {year:'numeric', month:'long'});
-  </script>
-
-  <!-- Optional structured data for richer search results -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Person",
-    "name":"Ziyang (Tony) Tang",
-    "url":"https://your-username.github.io/",
-    "sameAs":["https://scholar.google.com/", "https://www.linkedin.com/", "https://github.com/"],
-    "jobTitle":"AI/ML Research Engineer",
-    "alumniOf":"Purdue University",
-    "worksFor":"",
-    "knowsAbout":["Large Language Models", "Autonomous Driving", "Bioinformatics"]
-  }
+    const lastUpdated = document.getElementById('lastUpdated');
+    if(lastUpdated){ lastUpdated.textContent = d.toLocaleDateString(undefined, {year:'numeric', month:'long'}); }
   </script>
 </body>
 </html>
