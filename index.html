@@ -10,83 +10,63 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg: #0b0d12; --panel:#11141a; --muted:#a5adbd; --text:#e6e9ef; --brand:#7c3aed; --accent:#22c55e; --link:#60a5fa; --card:#0f1319; --border:#1b1f2a;
+      --bg: #ffffff; --panel:#f9fafb; --muted:#555555; --text:#111111; --brand:#7c3aed; --accent:#22c55e; --link:#2563eb; --card:#ffffff; --border:#e5e7eb;
     }
     *{box-sizing:border-box}
     html,body{margin:0; padding:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji"; background:var(--bg); color:var(--text);}
     a{color:var(--link); text-decoration:none}
     a:hover{text-decoration:underline}
     .container{max-width:1000px; margin:0 auto; padding:24px}
-    header{position:sticky; top:0; z-index:10; backdrop-filter:saturate(180%) blur(12px); background:linear-gradient(to bottom, rgba(11,13,18,.9), rgba(11,13,18,.6)); border-bottom:1px solid var(--border)}
+    header{position:sticky; top:0; z-index:10; backdrop-filter:saturate(180%) blur(12px); background:rgba(255,255,255,0.9); border-bottom:1px solid var(--border)}
     nav{display:flex; align-items:center; gap:18px; padding:12px 24px; overflow:auto}
     nav .spacer{flex:1}
     nav a{font-weight:600; opacity:.9}
     nav a:hover{opacity:1}
     .brand{display:flex; align-items:center; gap:12px}
-    .avatar{width:40px; height:40px; border-radius:999px; background:linear-gradient(135deg,#7c3aed,#22c55e); display:inline-flex; align-items:center; justify-content:center; font-weight:800}
+    .avatar{width:40px; height:40px; border-radius:999px; background:linear-gradient(135deg,#7c3aed,#22c55e); display:inline-flex; align-items:center; justify-content:center; font-weight:800; color:#fff}
     .pill{display:inline-flex; gap:8px; align-items:center; padding:6px 10px; border:1px solid var(--border); border-radius:999px; background:var(--panel); color:var(--muted); font-size:12px}
     .hero{display:grid; grid-template-columns:80% 20%; gap:28px; padding:40px 0; align-items:center}
     .hero h1{font-size:40px; margin:0 0 8px 0}
     .hero p{color:var(--muted); line-height:1.6}
-    .hero img{width:100%; max-width:200px; height:auto; border-radius:50%; border:3px solid var(--border); object-fit:cover; display:block; margin:0 auto}
+    .hero img{width:100%; max-width:240px; height:auto; border-radius:12px; border:none var(--border); object-fit:fill; display:block; margin:0 auto; box-shadow:0 4px 12px rgba(0,0,0,0.08); background: transparent; mix-blend-mode: multiply;}
     .grid{display:grid; gap:16px}
     .grid.cols-2{grid-template-columns:1fr 1fr}
     .grid.cols-3{grid-template-columns:repeat(3, 1fr)}
     .section{padding:30px 0 10px}
     .section h2{font-size:24px; margin:10px 0 20px; border-bottom:2px solid var(--border); padding-bottom:6px}
-    .card{background:var(--card); border:1px solid var(--border); border-radius:16px; padding:16px}
     .news-list{display:grid; gap:16px}
     .news-item{padding:16px; border-left:4px solid var(--accent); background:var(--panel); border-radius:12px;}
     .news-meta{color:var(--muted); font-size:14px; margin-bottom:6px}
     .news-title{font-weight:600; margin-bottom:6px}
     .news-desc{color:var(--text); line-height:1.4}
     .tag{display:inline-block; margin-top:6px; padding:2px 8px; border:1px solid var(--border); border-radius:999px; font-size:12px; color:var(--muted)}
-    section{scroll-margin-top: 80px;}
     footer{border-top:1px solid var(--border); margin-top:40px; padding:20px 0; color:var(--muted)}
     .btn{display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:10px; border:1px solid var(--border); background:var(--panel); color:var(--text); font-weight:600}
     .btn:hover{transform:translateY(-1px)}
     .row{display:flex; gap:12px; flex-wrap:wrap}
-    @media (max-width:900px){.hero{grid-template-columns:1fr; text-align:center}.hero img{margin-top:20px; max-width:180px}}
-    @media (max-width:620px){nav a{white-space:nowrap}.pub{grid-template-columns:60px 1fr}}
-      /* === Publications, Awards, Experience Templates === */
-    .section-note{color:var(--muted); font-size:13px; margin-top:-10px; margin-bottom:12px}
+
     /* Publications */
-    .pubs-list{display:grid; gap:16px}
-    .pub-item{display:grid; grid-template-columns:80px 1fr; gap:16px; padding:14px; border:1px solid var(--border); border-radius:12px; background:var(--panel)}
-    .pub-thumb{width:80px; height:80px; border-radius:10px; background:linear-gradient(135deg,#1d2533,#0b0d12); border:1px solid var(--border)}
-    .pub-title{font-weight:600}
-    .pub-meta{color:var(--muted); font-size:14px; margin-top:4px}
-    .pub-links{margin-top:8px; display:flex; gap:8px; flex-wrap:wrap}
-    .pub-link{padding:2px 8px; border:1px solid var(--border); border-radius:999px; font-size:12px; color:var(--muted)}
-    @media(max-width:600px){.pub-item{grid-template-columns:60px 1fr}}
+    .pubs-list{display:grid; gap:32px}
+    .pub-entry{display:block;}
+    .pub-details{text-align:left;}
+    .pub-details strong{font-size:18px;}
+    .pub-details div{margin-top:4px}
 
-    /* Awards */
-    .awards-list{display:grid; gap:12px}
-    .award-item{padding:12px 14px; border:1px solid var(--border); border-radius:10px; background:var(--panel); display:flex; justify-content:space-between; align-items:center}
-    .award-title{font-weight:600}
-    .award-meta{color:var(--muted); font-size:14px}
-
-    /* Experience */
-    .xp-list{display:grid; gap:16px}
-    .xp-item{padding:16px; border:1px solid var(--border); border-radius:12px; background:var(--panel)}
-    .xp-role{font-weight:700}
-    .xp-company{opacity:.95}
-    .xp-meta{color:var(--muted); font-size:14px; margin:4px 0 8px}
-    .xp-bullets{margin:0; padding-left:18px; color:var(--muted)}
-</style>
+    @media (max-width:900px){.hero{grid-template-columns:1fr; text-align:center}.hero img{margin-top:20px; max-width:200px}}
+  </style>
 </head>
 <body>
   <header>
     <nav class="container">
       <div class="brand">
-        <div class="avatar">ZT</div>
-        <a href="#top" style="font-weight:800; font-size:14px">Ziyang (Tony) Tang</a>
+        <a href="#top" style="font-weight:800; font-size:20px">Ziyang (Tony) Tang</a>
       </div>
       <div class="spacer"></div>
       <a href="#news">News</a>
       <a href="#publications">Publications</a>
       <a href="#awards">Awards</a>
-      <!-- <a href="#experience">Experience</a> -->
+      <a href="#experience">Experience</a>
+      <a href="#talks">Talks</a>
       <a href="#service">Service</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -95,7 +75,7 @@
   <main id="top" class="container">
     <section class="hero">
       <div>
-        <span class="pill">AI/ML • Autonomous Driving • Bioinformatics</span>
+        <!-- <span class="pill">AI/ML • Autonomous Driving • Bioinformatics</span> -->
         <p>
           <strong>Bio:</strong> I am currently a Machine Learning Engineer at 
             <a href="https://rivian.com/our-company" target="_blank" rel="noreferrer">Rivian</a>, where I design end-to-end autonomous driving systems spanning <em>perception</em>, <em>E2E planning</em>, and <em>visual-language action (VLA)</em>. Previously, I was a Senior Deep Learning Engineer at
@@ -124,52 +104,35 @@
     <!-- Recent Publications -->
     <section id="publications" class="section">
       <h2>Publications <span style="font-size:14px; color:var(--muted)">• <a href="https://scholar.google.com/citations?user=0lyfXlAAAAAJ&hl=en">Full list</a></span></h2>
-        <!-- <div class="section-note">Each publication shows a preview image (left) and plain text details (right).</div> -->
         <div class="pubs-list">
         <!-- Pub 1 -->
         <div class="pub-entry">
           <!-- <img src="assets/papers/spaim.jpg" alt="SpaIM preview" /> -->
-          <div>
-          <div><strong>SpaIM: Spatial Gene Expression Imputation with Context‑Style Transfer</strong></div>
-          <div style="color:var(--muted)">B. Li, Z. Tang, A. Budhkar, X. Liu, T. Zhang, B. Yang, J. Su, Q. Song</div>
-          <div style="color:var(--muted)"><em>Nature Communications</em>, 2025</div>
-          <!-- <div style="margin-top:6px">
-            <a class="tag" href="#">paper</a>
-            <a class="tag" href="#">code</a>
-            <a class="tag" href="#">bibtex</a>
-          </div> -->
+          <div class="pub-details">
+            <strong>SpaIM: Spatial Gene Expression Imputation with Context‑Style Transfer</strong>
+            <div style="color:var(--muted)">B. Li, Z. Tang, A. Budhkar, X. Liu, T. Zhang, B. Yang, J. Su, Q. Song</div>
+            <div style="color:var(--muted)"><em>Nature Communications</em>, 2025</div>
           </div>
-          </div>
+        </div>
         <!-- Pub 2 -->
         <div class="pub-entry">
           <!-- <img src="assets/papers/xplanner.jpg" alt="Xplanner preview" /> -->
-          <div>
-          <div><strong>Deep Learning-Enabled Integration of Histology and Transcriptomics for Tissue Spatial Profile Analysis</strong></div>
-          <div style="color:var(--muted)">Y. Ge, J. Leng, Z. Tang, K. Wang, K. U, S. M. Zhang, S. Han, Y. Zhang, J. Xiang, S. Yang, X. Liu, Y. Song, X. Wang, Y. Li, J. Zhao</div>
-          <div style="color:var(--muted)"><em>Research</em>, 2025</div>
-          <!-- <div style="margin-top:6px">
-            <a class="tag" href="#">preprint</a>
-            <a class="tag" href="#">code</a>
-          </div> -->
+          <div class="pub-details">
+            <strong>Deep Learning-Enabled Integration of Histology and Transcriptomics for Tissue Spatial Profile Analysis</strong>
+            <div style="color:var(--muted)">Y. Ge, J. Leng, Z. Tang, K. Wang, K. U, S. M. Zhang, S. Han, Y. Zhang, J. Xiang, S. Yang, X. Liu, Y. Song, X. Wang, Y. Li, J. Zhao</div>
+            <div style="color:var(--muted)"><em>Research</em>, 2025</div>
           </div>
-          </div>
-          <br>
         </div>
         <!-- Pub 3 -->
         <div class="pub-entry">
-          <!-- <img src="assets/papers/xplanner.jpg" alt="Xplanner preview" /> -->
-          <div>
-          <div><strong>Optimizing Concrete Strength: How Nanomaterials and AI Redefine Mix Design</strong></div>
-          <div style="color:var(--muted)">D. Huang, G. Han, Z. Tang</div>
-          <div style="color:var(--muted)"><em>Case Studies in Construction Materials</em>, 2025</div>
-          <!-- <div style="margin-top:6px">
-            <a class="tag" href="#">preprint</a>
-            <a class="tag" href="#">code</a>
-          </div> -->
-          </div>
+          <!-- <img src="assets/papers/concrete.jpg" alt="Concrete preview" /> -->
+          <div class="pub-details">
+            <strong>Optimizing Concrete Strength: How Nanomaterials and AI Redefine Mix Design</strong>
+            <div style="color:var(--muted)">D. Huang, G. Han, Z. Tang</div>
+            <div style="color:var(--muted)"><em>Case Studies in Construction Materials</em>, 2025</div>
           </div>
         </div>
-
+      </div>
     </section>
 
     <!-- Honors & Awards -->
@@ -177,43 +140,20 @@
       <h2>Honors & Awards</h2>
       <ul class="awards-bullets">
         <li>📣 <strong>Aug 2022:</strong> Bilsland Fellowship</li>
-        <li>⭐ <strong>Aug 2019:</strong> polytechnic Research Impact Area (PRIA) Research Fellowship</li>
+        <li>⭐ <strong>Aug 2019:</strong> Polytechnic Research Impact Area (PRIA) Research Fellowship</li>
       </ul>
     </section>
 
-    <!-- Work Experience
-    <section id="experience" class="section">
-      <h2>Work Experience</h2>
-      <div class="section-note">Template: most recent first. Focus on impact.</div>
-      <div class="xp-list">
-        <div class="xp-item">
-          <div class="xp-role">Machine Learning Engineer — <span class="xp-company">Rivian Automotive</span></div>
-          <div class="xp-meta">Perception • End‑to‑End Planning • VLA | YYYY–Present | Location</div>
-          <ul class="xp-bullets">
-            <li>Designed E2E autonomous driving stack; shipped continuous decoder for planning with 5× lower inference latency.</li>
-            <li>Led perception improvements for dynamic objects and lane boundaries; boosted AP/L2 metrics by X%.</li>
-            <li>Scaled training with FSDP + ZeRO‑3; reduced GPU-hours by Y% via dynamic resolution and token compression.</li>
-          </ul>
-        </div>
-        <div class="xp-item">
-          <div class="xp-role">Senior Deep Learning Engineer — <span class="xp-company">XSense.AI (XPeng Motors)</span></div>
-          <div class="xp-meta">VLM/VLA • Multi‑Modal • Systems | YYYY–YYYY | Location</div>
-          <ul class="xp-bullets">
-            <li>Developed VLM/VLA pipelines with temporal encoders and multi‑modal training.</li>
-            <li>Built evaluation harness for closed‑loop planning; improved success rate by Z% on internal benchmarks.</li>
-          </ul>
-        </div>
-      </div>
-    </section> -->
-
     <section id="Service" class="section">
-       <h2>Service</h2> 
+       <h2>Service</h2>
+       <ul class="awards-bullets">
           <li>Journal of System Architecture</li>
-          <li>IEEE Transactions on Systems, Man and Cybemetics</li>
-          <li>Journal of Signal Processing Systems </li>
+          <li>IEEE Transactions on Systems, Man and Cybernetics</li>
+          <li>Journal of Signal Processing Systems</li>
           <li>IEEE Internet of Things Journal</li>
-          <li>Information Sciences </li>
-          <li>Frontiers Bioengineering </li>
+          <li>Information Sciences</li>
+          <li>Frontiers Bioengineering</li>
+        </ul>
     </section>
 
     <section id="contact" class="section">
