@@ -33,13 +33,14 @@
     .grid.cols-2{grid-template-columns:1fr 1fr}
     .grid.cols-3{grid-template-columns:repeat(3, 1fr)}
     .section{padding:30px 0 10px}
-    .section h2{font-size:24px; margin:10px 0 20px; border-bottom:2px solid var(--border); padding-bottom:6px}
+    .section h2{font-size:24px; margin:10px 0 20px; border-bottom:2px solid var(--border); padding-bottom:6px; scroll-margin-top: 100px;}
     .news-list{display:grid; gap:16px}
     .news-item{padding:16px; border-left:4px solid var(--accent); background:var(--panel); border-radius:12px;}
     .news-meta{color:var(--muted); font-size:14px; margin-bottom:6px}
     .news-title{font-weight:600; margin-bottom:6px}
     .news-desc{color:var(--text); line-height:1.4}
     .tag{display:inline-block; margin-top:6px; padding:2px 8px; border:1px solid var(--border); border-radius:999px; font-size:12px; color:var(--muted)}
+    section {scroll-margin-top: 100px;}
     footer{border-top:1px solid var(--border); margin-top:40px; padding:20px 0; color:var(--muted)}
     .btn{display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:10px; border:1px solid var(--border); background:var(--panel); color:var(--text); font-weight:600}
     .btn:hover{transform:translateY(-1px)}
@@ -166,7 +167,7 @@
      </section>
 
     <footer class="container">
-      <div>© <span id="year"></span> Ziyang (Tony) Tang • Built with a simple static template.</div>
+      <div>© <span id="year"></span> Ziyang (Tony) Tang</div>
     </footer>
   </main>
 
